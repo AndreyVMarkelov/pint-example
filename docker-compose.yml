@@ -1,0 +1,35 @@
+version: "2"
+services:
+  mockserver:
+    image: jamesdbloom/mockserver:mockserver-5.4.1
+    ports:
+      - "1080:1080"
+    environment:
+      - LOG_LEVEL=WARN
+  simple-sd:
+    image: andreymarkelov/simple-sd
+    ports:
+      - "8761:8761"
+  housekeeper:
+    image: andreymarkelov/housekeeper
+    ports:
+      - "8081:8081"
+    environment:
+      EUREKASERVER_URI: "http://simple-sd:8761/eureka/"
+      EUREKASERVER_PORT: "8761"
+    restart: on-failure
+  billing:
+    image: andreymarkelov/billing
+    ports:
+      - "8082:8082"
+    environment:
+      EUREKASERVER_URI: "http://simple-sd:8761/eureka/"
+      EUREKASERVER_PORT: "8761"
+  route:
+    image: andreymarkelov/route
+    ports:
+      - "8083:8083"
+    environment:
+      EUREKASERVER_URI: "http://simple-sd:8761/eureka/"
+      EUREKASERVER_PORT: "8761"
+      PROVIDER_URL: "http://mockserver:1080"

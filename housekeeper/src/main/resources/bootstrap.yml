@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: housekeeper
+  profiles:
+    active:
+      default

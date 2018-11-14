@@ -1,0 +1,19 @@
+server.port: 8081
+
+eureka:
+  instance:
+    healthCheckUrlPath: /actuator/health
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: ${EUREKASERVER_URI:http://localhost:8761/eureka/}
+    healthcheck:
+      enabled: true
+
+info:
+  app:
+    name: acceptor
+    description: Accept client messages
+    version: "@project.version@"

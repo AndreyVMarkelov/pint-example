@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>test.hb</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>parent-pom</artifactId>
+    <packaging>pom</packaging>
+
+    <name>all-test-services</name>
+    <description>Parent Pom for the tests</description>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.0.RELEASE</version>
+    </parent>
+
+    <modules>
+        <module>simple-sd</module>
+        <module>housekeeper</module>
+        <module>billing</module>
+        <module>route</module>
+    </modules>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>1.2.0</version>
+                <configuration>
+                    <baseImage>java</baseImage>
+                    <imageName>example</imageName>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+

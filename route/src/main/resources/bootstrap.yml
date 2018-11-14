@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: route
+  profiles:
+    active:
+      default
