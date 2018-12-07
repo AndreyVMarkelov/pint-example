@@ -11,7 +11,7 @@ services:
     ports:
       - "8761:8761"
   housekeeper:
-    image: andreymarkelov/housekeeper
+    image: andreymarkelov/acceptor
     ports:
       - "8081:8081"
     environment:

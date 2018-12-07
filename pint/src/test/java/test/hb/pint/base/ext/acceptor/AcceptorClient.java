@@ -22,7 +22,7 @@ public class AcceptorClient {
             String text,
             String sender,
             String desctination,
-            String userId) throws Exception {
+            String userId) {
         HttpPost httpPost = new HttpPost("http://" + defaultHost + ":" + defaultPort + "/v1/sms/send");
 
         String json = "{" + 
@@ -32,12 +32,16 @@ public class AcceptorClient {
                 "\"userId\": \"" + userId + "\"" + 
                 "}\n";
 
-        StringEntity entity = new StringEntity(json);
-        httpPost.setEntity(entity);
-        httpPost.setHeader("Accept", "application/json");
-        httpPost.setHeader("Content-type", "application/json");
+        try {
+            StringEntity entity = new StringEntity(json);
+            httpPost.setEntity(entity);
+            httpPost.setHeader("Accept", "application/json");
+            httpPost.setHeader("Content-type", "application/json");
 
-        CloseableHttpResponse response = httpClient.execute(httpPost);
-        return EntityUtils.toString(response.getEntity());
+            CloseableHttpResponse response = httpClient.execute(httpPost);
+            return EntityUtils.toString(response.getEntity());
+        } catch (Exception ex) {
+            throw new RuntimeException("Error send message to acceptor service", ex);
+        }
     }
 }

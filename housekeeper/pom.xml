@@ -24,7 +24,7 @@
         <java.version>1.8</java.version>
         <spring-cloud.version>Greenwich.M1</spring-cloud.version>
         <start-class>test.hb.housekeeper.HousekeeperApplication</start-class>
-        <docker.image.name>andreymarkelov/housekeeper</docker.image.name>
+        <docker.image.name>andreymarkelov/acceptor</docker.image.name>
         <docker.image.tag>latest</docker.image.tag>
     </properties>
 
