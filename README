@@ -3,5 +3,8 @@ To build all services as Docker:
 mvn clean package docker:build
 ```
 
-Later go to pint and run tests (from IDE)
-
+Later go to pint and run tests (from IDE) or in command line:
+```
+cd pint
+mvn test
+```
