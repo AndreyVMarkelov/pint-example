@@ -11,7 +11,7 @@ import test.hb.pint.base.ext.NetworkHolder;
 public class BillingExtention implements BeforeAllCallback, AfterAllCallback {
     private static final String NETWORK = "networkExtension";
 
-    private BillingContainer billingContainer = new BillingContainer(8082);
+    private BillingContainer billingContainer = new BillingContainer(NetworkHolder.network(), 8082);
 
     @Override
     public void afterAll(ExtensionContext context) throws Exception {
